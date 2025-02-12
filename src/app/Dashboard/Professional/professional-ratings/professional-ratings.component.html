@@ -1,0 +1,39 @@
+  <!-- <div class="container mt-4" style="margin-left: 250px; width: 75%;">
+    <h2 class="text-center mb-4">Ratings</h2>
+    <div *ngIf="isLoading" class="alert alert-info">Loading ratings...</div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    <div *ngIf="!isLoading && !error && ratings.length === 0" class="alert alert-warning">No ratings available.</div>
+    <div class="row" *ngIf="!isLoading && !error && ratings.length > 0">
+      <div class="col-md-4 mb-4" *ngFor="let rating of ratings">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Rating ID: {{ rating.ratingId }}</h5>
+            <p class="card-text">Package ID: {{ rating.packageId }}</p>
+            <p class="card-text">Customer ID: {{ rating.customerId }}</p>
+            <p class="card-text">Rating Value: {{ rating.ratingValue }}</p>
+            <p class="card-text">Comment: {{ rating.comment }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="container mt-4" style="margin-left: 250px; width: 75%;">
+    <h2 class="text-center mb-4" style="font-family: 'Arial', sans-serif; color: #4CAF50; font-size: 36px; font-weight: bold;">Ratings</h2>
+    <div *ngIf="isLoading" class="alert alert-info" style="font-family: 'Arial', sans-serif; font-size: 18px;">Loading ratings...</div>
+    <div *ngIf="error" class="alert alert-danger" style="font-family: 'Arial', sans-serif; font-size: 18px;">{{ error }}</div>
+    <div *ngIf="!isLoading && !error && ratings.length === 0" class="alert alert-warning" style="font-family: 'Arial', sans-serif; font-size: 18px;">No ratings available.</div>
+    <div class="row" *ngIf="!isLoading && !error && ratings.length > 0">
+      <div class="col-md-4 mb-4" *ngFor="let rating of ratings">
+        <div class="card h-100" style="border: 1px solid #4CAF50;">
+          <div class="card-body" style="font-family: 'Arial', sans-serif; font-size: 16px;">
+            <h5 class="card-title" style="color: #4CAF50; font-size: 24px; font-weight: bold;">Rating ID: {{ rating.ratingId }}</h5>
+            <p class="card-text">Package ID: {{ rating.packageId }}</p>
+            <p class="card-text">Customer ID: {{ rating.customerId }}</p>
+            <p class="card-text">Rating Value: {{ rating.ratingValue }}</p>
+            <p class="card-text">Comment: {{ rating.comment }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

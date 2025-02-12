@@ -1,0 +1,45 @@
+  :host {
+    background-color: #0e1217; 
+    height: 100vh;
+    color: #ecf0f1; 
+    display: flex;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    color: #ecf0f1; 
+    background-color: #0429567d;
+    border-radius: 8px;
+    padding: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .alert {
+    margin-bottom: 1rem;
+  }
+  
+  .alert-info {
+    background-color: #17a2b8;
+    color: #fff;
+  }
+  
+  .alert-danger {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .alert-warning {
+    background-color: #ffc107;
+    color: #212529;
+  }

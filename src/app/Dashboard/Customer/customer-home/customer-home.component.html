@@ -1,0 +1,276 @@
+<!-- <div class="container mt-4">
+  <div class="row">
+    <div class="col-12 mb-4">
+      <div class="card bg-dark text-light">
+        <div class="card-body" style="padding-bottom: 0.5rem;">
+          <h1 class="card-title">Welcome, {{ customer.customerName }}!</h1>
+          <p class="card-text"><strong>Email:</strong> {{ customer.email }}</p>
+          <p class="card-text"><strong>Address:</strong> {{ customer.address }}</p>
+          <p class="card-text"><strong>Mobile Number:</strong> {{ customer.mobileNumber || 'Not provided' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <section class="wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center mb-5">
+          <h1 class="display-4 font-weight-bolder text-light">Our Services</h1>
+          <p class="lead text-light">Explore the variety of services we offer.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-4" *ngFor="let service of services">
+          <div class="card text-white bg-dark card-has-bg click-col" (click)="viewDetails(service.serviceId)">
+            <img [src]="service.servicePictureUrl" class="card-img-top" alt="{{ service.serviceName }}">
+            <div class="card-body">
+              <small class="card-meta mb-2">Service</small>
+              <h4 class="card-title mt-0"><a class="text-white">{{ service.serviceName }}</a></h4>
+              <p class="card-text">{{ service.description }}</p>
+            </div>
+            <div class="card-footer">
+              <div class="media">
+                <img class="mr-3 rounded-circle" src="https://assets.codepen.io/460692/internal/avatars/users/default.png?format=auto&version=1688931977&width=80&height=80" alt="Generic placeholder image" style="max-width:50px">
+                <div class="media-body">
+                  <h6 class="my-0 text-white d-block">Service Provider</h6>
+                  <small>Professional ID: {{ service.professionalId }}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-us mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center mb-5">
+          <h1 class="display-4 font-weight-bolder text-light">About CrewFix</h1>
+          <p class="lead text-light">Learn more about our mission and values.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <h4 class="card-title">Our Mission</h4>
+              <p class="card-text">At CrewFix, our mission is to provide fast, reliable, and high-quality home repair and maintenance services. We aim to ensure your home is always in top shape, handled by experienced professionals who care about your satisfaction.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <h4 class="card-title">Our Values</h4>
+              <p class="card-text">We believe in delivering exceptional customer service, building long-lasting relationships, and maintaining transparency in our pricing and services. Our team is dedicated to making your life easier by taking care of all your home repair needs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center mb-5">
+          <h1 class="display-4 font-weight-bolder text-light">Customer Testimonials</h1>
+          <p class="lead text-light">Hear what our satisfied customers have to say.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <p class="card-text">"CrewFix has been a lifesaver! Their team is professional, punctual, and always delivers top-notch service. Highly recommend!"</p>
+              <p class="card-text"><strong>- Sarah K.</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <p class="card-text">"I had a plumbing emergency, and CrewFix responded quickly and fixed the issue in no time. Excellent service!"</p>
+              <p class="card-text"><strong>- John D.</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <p class="card-text">"The CrewFix team is amazing! They handled my home renovation project with great care and professionalism. I'm extremely satisfied with the results."</p>
+              <p class="card-text"><strong>- Emily R.</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center mb-5">
+          <h1 class="display-4 font-weight-bolder text-light">Frequently Asked Questions</h1>
+          <p class="lead text-light">Find answers to common questions about our services.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <h4 class="card-title">How do I book a service?</h4>
+              <p class="card-text">You can book a service through our app or website. Simply choose the service you need, select a convenient time, and confirm your booking.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <h4 class="card-title">What payment methods do you accept?</h4>
+              <p class="card-text">We accept various payment methods, including credit/debit cards, online banking, and digital wallets. Payment details can be entered securely through our app or website.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <h4 class="card-title">Are your professionals certified?</h4>
+              <p class="card-text">Yes, all our professionals are experienced and certified in their respective fields. We ensure they undergo rigorous background checks and training to provide the best service possible.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <h4 class="card-title">What if I'm not satisfied with the service?</h4>
+              <p class="card-text">Customer satisfaction is our top priority. If you're not satisfied with the service, please contact our support team, and we'll do our best to resolve the issue promptly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div> -->
+
+<div class="container mt-4">
+  <div class="row mb-4 justify-content-end">
+    <div class="col-4">
+      <input type="text" class="form-control form-control-sm" placeholder="Search services..." [(ngModel)]="searchTerm" (input)="filterServices()">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 mb-4">
+      <div class="card bg-dark text-light" style="margin: auto;">
+        <div class="card-body">
+          <h2 class="card-title">Welcome, {{ customer.customerName }}!</h2>
+          <p class="card-text"><strong>Email:</strong> {{ customer.email }}</p>
+          <p class="card-text"><strong>Address:</strong> {{ customer.address }}</p>
+          <p class="card-text"><strong>Mobile Number:</strong> {{ customer.mobileNumber || 'Not provided' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center mb-5">
+          <h1 class="display-4 font-weight-bolder text-light">Our Services</h1>
+          <p class="lead text-light">Explore the variety of services we offer.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-4" *ngFor="let service of filteredServices">
+          <div class="card text-white bg-dark card-has-bg click-col" (click)="viewDetails(service.serviceId)">
+            <img [src]="service.servicePictureUrl" class="card-img-top" alt="{{ service.serviceName }}">
+            <div class="card-body">
+              <small class="card-meta mb-2">Service</small>
+              <h4 class="card-title mt-0"><a class="text-white">{{ service.serviceName }}</a></h4>
+              <p class="card-text">{{ service.description }}</p>
+            </div>
+            <div class="card-footer">
+              <div class="media">
+                <img class="mr-3 rounded-circle" src="https://assets.codepen.io/460692/internal/avatars/users/default.png?format=auto&version=1688931977&width=80&height=80" alt="Generic placeholder image" style="max-width:50px">
+                <div class="media-body">
+                  <h6 class="my-0 text-white d-block">Service Provider</h6>
+                  <small>Professional ID: {{ service.professionalId }}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-us mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center mb-5">
+          <h1 class="display-4 font-weight-bolder text-light">About CrewFix</h1>
+          <p class="lead text-light">Learn more about our mission and values.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <h4 class="card-title">Our Mission</h4>
+              <p class="card-text">At CrewFix, our mission is to provide fast, reliable, and high-quality home repair and maintenance services. We aim to ensure your home is always in top shape, handled by experienced professionals who care about your satisfaction.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <h4 class="card-title">Our Values</h4>
+              <p class="card-text">We believe in delivering exceptional customer service, building long-lasting relationships, and maintaining transparency in our pricing and services. Our team is dedicated to making your life easier by taking care of all your home repair needs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center mb-5">
+          <h1 class="display-4 font-weight-bolder text-light">Customer Testimonials</h1>
+          <p class="lead text-light">Hear what our satisfied customers have to say.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <p class="card-text">"CrewFix has been a lifesaver! Their team is professional, punctual, and always delivers top-notch service. Highly recommend!"</p>
+              <p class="card-text"><strong>- Sarah K.</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <p class="card-text">"I had a plumbing emergency, and CrewFix responded quickly and fixed the issue in no time. Excellent service!"</p>
+              <p class="card-text"><strong>- John D.</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <p class="card-text">"The CrewFix team is amazing! They handled my home renovation project with great care and professionalism. I'm extremely satisfied with the results."</p>
+              <p class="card-text"><strong>- Emily R.</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

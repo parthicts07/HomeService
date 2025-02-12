@@ -1,0 +1,46 @@
+<!-- <div class="container mt-4">
+    <h2 class="text-center mb-4">My Payments</h2>
+    <div class="row">
+      <div *ngFor="let payment of payments" class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Payment ID: {{ payment.paymentId }}</h5>
+            <p class="card-text">
+              <strong>Booking ID:</strong> {{ payment.bookingId }}<br>
+              <strong>Amount:</strong> ₹{{ payment.amount }}<br>
+              <strong>Payment Method:</strong> {{ payment.paymentMethod }}<br>
+              <strong>Transaction ID:</strong> {{ payment.transactionId }}<br>
+              <strong>Payment Date:</strong> {{ payment.paymentDate | date:'medium' }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="container mt-4">
+    <h2 class="text-center mb-4">My Payments</h2>
+    <div *ngIf="payments.length > 0; else noPayments">
+      <div class="row">
+        <div *ngFor="let payment of payments" class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Payment ID: {{ payment.paymentId }}</h5>
+              <p class="card-text">
+                <strong>Booking ID:</strong> {{ payment.bookingId }}<br>
+                <strong>Amount:</strong> ₹{{ payment.amount }}<br>
+                <strong>Payment Method:</strong> {{ payment.paymentMethod }}<br>
+                <strong>Transaction ID:</strong> {{ payment.transactionId }}<br>
+                <strong>Payment Date:</strong> {{ payment.paymentDate | date:'medium' }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noPayments>
+      <div class="alert alert-warning text-center" role="alert">
+        No payments found.
+      </div>
+    </ng-template>
+  </div>

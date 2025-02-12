@@ -1,0 +1,90 @@
+  :host {
+    background-color: #ecf0f1; 
+    height: 100vh;
+    color: #0e1217;
+    display: flex;
+  }
+
+  .mat-calendar {
+    width: 300px;
+    margin: 0 auto;
+  }
+  
+  .mat-calendar-body-cell-content {
+    font-size: 12px;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+  }
+  
+  .mat-calendar-table {
+    width: 100%;
+  }
+  
+  .mat-calendar-header {
+    font-size: 14px;
+    color: white;
+    background-color: #415c7dc0;
+    border: 1px solid white;
+  }
+  
+  .mat-calendar-controls .mat-icon-button {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .mat-calendar-period-button {
+    font-size: 14px;
+  }
+  
+  .has-booking .mat-calendar-body-cell-content {
+    background-color: #ffcc80;
+    border-radius: 50%;
+  }
+  
+  .table {
+    width: 70%;
+    font-size: 14px;
+    margin: 0 auto;
+  }
+  
+  .table th, .table td {
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .table thead th {
+    cursor: pointer;
+  }
+  
+  .table tbody tr.table-warning {
+    background-color: #fff3cd;
+  }
+  
+  .table tbody tr.table-primary {
+    background-color: #cce5ff;
+  }
+  
+  .table tbody tr.table-success {
+    background-color: #d4edda;
+  }
+  
+  .table tbody tr.table-danger {
+    background-color: #f8d7da;
+  }
+  
+  .pagination {
+    margin-top: 20px;
+  }
+  
+  .page-item.disabled .page-link {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+  }
+

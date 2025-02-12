@@ -1,0 +1,70 @@
+<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['admin/home']">Admin Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">  <li class="nav-item">
+            <a class="nav-link" [routerLink]="['admin/home']" routerLinkActive="active">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" routerLink="/search" routerLinkActive="active">Search</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" routerLink="/summary" routerLinkActive="active">Summary</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">  <li class="nav-item">
+            <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profile</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" (click)="logout()" routerLink="/login">Logout</a>
+            </li>
+
+        </ul>
+        </div>
+    </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-red navbar-dark">
+    <div class="wrapper">
+      
+    </div>
+<div class="container-fluid all-show">
+<a class="navbar-brand" href="#">HomeService <i class="fa fa-codepen"></i></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+   <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" [routerLink]="['/admin/home']">Home</a>
+    </li>
+  <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/admin/users']">Users</a>
+    </li>
+  <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/admin/services']">Service</a>
+    </li>
+  <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/admin/packages']">Packages</a>
+    </li>
+  <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/admin/requests']">Requests</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/admin/bookings']">Bookings</a>
+      </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/admin/reports']">Reports</a>
+      </li>
+</ul>
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+    <li class="nav-item">
+        <a class="nav-link" (click)="logout()">Logout</a>
+    </li>
+</ul>
+</div>
+</div>
+</nav>

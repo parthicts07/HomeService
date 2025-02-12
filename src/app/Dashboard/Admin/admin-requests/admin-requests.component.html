@@ -1,0 +1,22 @@
+<div class="container mt-4" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px;">
+  <h1 class="text-center mb-4" style="font-family: 'Arial', sans-serif; color: #343a40; font-size: 36px; font-weight: bold;">Unapproved Professionals</h1>
+  <div class="row">
+    <div class="col-md-6 mb-4" *ngFor="let prof of professionals">
+      <div class="card h-100" style="border: 1px solid #343a40; background-color: #343a40; color: #fff; width: 18rem;">
+        <div class="card-body" style="font-family: 'Arial', sans-serif; font-size: 16px;">
+          <p class="card-title"><strong>Name:</strong> {{ prof.professionalName }}</p>
+          <p class="card-text"><strong>Bio:</strong> {{ prof.bio }}</p>
+          <p class="card-text"><strong>Experience Years:</strong> {{ prof.experienceYears }}</p>
+          <p class="card-text"><strong>Skills:</strong> {{ prof.skills }}</p>
+          <p class="card-text"><strong>Service:</strong> {{ prof.service }}</p>
+          <p class="card-text"><strong>Nationality:</strong> {{ prof.nationality }}</p>
+          <p class="card-text"><strong>Email:</strong> {{ prof.email }}</p>
+          <p class="card-text"><strong>Mobile Number:</strong> {{ prof.mobileNumber }}</p>
+          <button class="btn btn-primary btn-block animated-button" (click)="approveProfessional(prof.userId)">
+            <i class="fas fa-check"></i> Approve
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

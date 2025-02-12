@@ -1,0 +1,95 @@
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <form #signUpForm="ngForm" (ngSubmit)="onSignUpSubmit()" style="padding: 1px;">
+            <h1>Create Account</h1>
+			<br>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+					<label name="userName" style="margin-right: 70px;">Username</label>
+                    <input type="text" class="form-control" [(ngModel)]="signUp.userName" name="userName" (blur)="handleTouch('userName')"/>
+					<div *ngIf="errors['userName']" class="text-danger">{{ errors['userName'] }}</div>
+                </div>
+                <div class="col-md-6 mb-3">
+					<label name="password" style="margin-right: 70px;">Password</label>
+                    <input type="password" class="form-control" [(ngModel)]="signUp.password" name="password" (blur)="handleTouch('password')"/>
+					<div *ngIf="errors['password']" [ngClass]="{
+						'error-required': errors['password'] === 'Required',
+						'error-weak': errors['password'] === 'Weak',
+						'error-average': errors['password'] === 'Average',
+						'error-strong': errors['password'] === 'Strong'
+					  }">{{ errors['password'] }}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+					<label name="customerName" style="margin-right:100px;">FullName</label>
+                    <input type="text" class="form-control" [(ngModel)]="signUp.customerName" name="customerName" (blur)="handleTouch('customerName')"/>
+					<div *ngIf="errors['customerName']" class="text-danger">{{ errors['customerName'] }}</div>
+                </div>
+                <div class="col-md-6 mb-3">
+					<label name="email" style="margin-right: 70px;">Email</label>
+                    <input type="text" class="form-control" [(ngModel)]="signUp.email" name="email" (blur)="handleTouch('email')"/>
+					<div *ngIf="errors['email']" class="text-danger">{{ errors['email'] }}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+					<label name="mobileNumber" style="margin-right:100px;">Mobile</label>
+                    <input type="text" class="form-control" [(ngModel)]="signUp.mobileNumber" name="mobileNumber"/>
+                </div>
+                <div class="col-md-6 mb-3">
+					<label name="city" style="margin-right: 70px;">City</label>
+                    <input type="text" class="form-control" [(ngModel)]="signUp.city" name="city"/>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label name="address"  style="margin-right: 70px;">Address</label>
+                    <textarea name="address" class="form-control"  [(ngModel)]="signUp.address"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+					<label name="state" style="margin-right: 70px;">State</label>
+                    <input type="text" class="form-control" [(ngModel)]="signUp.state" name="state"/>
+                </div>
+                <div class="col-md-6 mb-3">
+					<label name="zipCode" style="margin-right: 70px;">Zip Code</label>
+                    <input type="text" class="form-control" [(ngModel)]="signUp.zipCode" name="zipCode"/>
+                </div>
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        <form #form="ngForm" (ngSubmit)="onFormSubmit()">
+            <h1>Sign in</h1>
+			<br>
+			<label class="form-label" style="margin-right: 150px;">Username</label>
+            <input class="form-control" type="text" name="userName" [(ngModel)]="model.userName" [ngModelOptions]="{standalone: true}">            
+			<br>
+
+			<label class="form-label" style="margin-right: 150px;">Password</label>
+            <input class="form-control" type="password" name="password" [(ngModel)]="model.password" [ngModelOptions]="{standalone: true}">
+			<br>
+            <button type="submit" class="btn">Sign In</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button class="ghost" id="signUp">Sign Up</button>
+            </div>
+            
+        </div>
+        <!-- <a [routerLink]="['/']" style="margin-left: 250px; margin-bottom: 20px;">Home</a> -->
+    </div>
+</div>

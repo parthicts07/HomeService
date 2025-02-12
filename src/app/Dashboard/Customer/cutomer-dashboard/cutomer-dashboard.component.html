@@ -1,0 +1,10 @@
+<app-customer-navbar></app-customer-navbar>
+
+<div [ngSwitch]="true">
+    <ng-container *ngSwitchCase="isCustomerHome">
+        <app-customer-home></app-customer-home>
+    </ng-container>
+    <ng-container *ngSwitchCase="isCustomerPackage">
+        <app-customer-package></app-customer-package>
+    </ng-container>
+</div>

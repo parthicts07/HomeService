@@ -1,0 +1,115 @@
+<div class="container mt-4" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px;">
+  <h2 class="text-center mb-4" style="font-family: 'Arial', sans-serif; color: #343a40; font-size: 36px; font-weight: bold;">Frequently Asked Questions</h2>
+  <ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
+      <ngb-panel title="How do I report a Professional?">
+          <ng-template ngbPanelContent>
+              To report a professional, select 'Professional' from the report type dropdown, choose the specific professional, and provide a reason for the report.
+          </ng-template>
+      </ngb-panel>
+      <ngb-panel title="How do I report a Service?">
+          <ng-template ngbPanelContent>
+              To report a service, select 'Service' from the report type dropdown, choose the specific service, and provide a reason for the report.
+          </ng-template>
+      </ngb-panel>
+      <ngb-panel title="What happens after I submit a report?">
+          <ng-template ngbPanelContent>
+              After you submit a report, it will be reviewed by our team. If necessary, appropriate actions will be taken based on the report.
+          </ng-template>
+      </ngb-panel>
+      <ngb-panel title="How can I track the status of my report?">
+          <ng-template ngbPanelContent>
+              You can track the status of your report by logging into your account and navigating to the 'Reports' section. There, you will find updates on the progress of your report.
+          </ng-template>
+      </ngb-panel>
+      <ngb-panel title="Can I edit or withdraw my report after submission?">
+          <ng-template ngbPanelContent>
+              Once a report is submitted, you cannot edit it. However, you can withdraw your report by contacting our support team with the report ID.
+          </ng-template>
+      </ngb-panel>
+      <ngb-panel title="What types of issues can I report?">
+          <ng-template ngbPanelContent>
+              You can report issues related to professionals, services, or packages. This includes inappropriate behavior, poor service quality, or any other concerns you may have.
+          </ng-template>
+      </ngb-panel>
+  </ngb-accordion>
+
+  <form (ngSubmit)="reportEntity()" class="mt-4">
+      <div class="mb-3">
+          <label for="reportType" class="form-label">Report Type</label>
+          <select class="form-control" id="reportType" [(ngModel)]="reportModel.reportType" name="reportType" required (change)="loadEntities()">
+              <option value="User">Professional</option>
+              <option value="Service">Service</option>
+              <option value="Package">Package</option>
+          </select>
+      </div>
+      <div class="mb-3" *ngIf="entities.length > 0">
+          <label for="reportedEntityId" class="form-label">Select Entity</label>
+          <select class="form-control" id="reportedEntityId" [(ngModel)]="reportModel.reportedEntityId" name="reportedEntityId" required>
+              <option *ngFor="let entity of entities" [value]="entity.id">{{ entity.name }}</option>
+          </select>
+      </div>
+      <div class="mb-3">
+          <label for="reason" class="form-label">Reason</label>
+          <textarea class="form-control" id="reason" [(ngModel)]="reportModel.reason" name="reason" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit Report</button>
+  </form>
+</div>
+
+<!-- <div class="container mt-4" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px;">
+  <h2 class="text-center mb-4" style="font-family: 'Arial', sans-serif; color: #343a40; font-size: 36px; font-weight: bold;">Frequently Asked Questions</h2>
+  <ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
+      <ngb-panel title="How do I report a Professional?">
+          <ng-template ngbPanelContent>
+              To report a professional, select 'Professional' from the report type dropdown, choose the specific professional, and provide a reason for the report.
+          </ng-template>
+      </ngb-panel>
+      <ngb-panel title="How do I report a Service?">
+          <ng-template ngbPanelContent>
+              To report a service, select 'Service' from the report type dropdown, choose the specific service, and provide a reason for the report.
+          </ng-template>
+      </ngb-panel>
+      <ngb-panel title="What happens after I submit a report?">
+          <ng-template ngbPanelContent>
+              After you submit a report, it will be reviewed by our team. If necessary, appropriate actions will be taken based on the report.
+          </ng-template>
+      </ngb-panel>
+      <ngb-panel title="How can I track the status of my report?">
+          <ng-template ngbPanelContent>
+              You can track the status of your report by logging into your account and navigating to the 'Reports' section. There, you will find updates on the progress of your report.
+          </ng-template>
+      </ngb-panel>
+      <ngb-panel title="Can I edit or withdraw my report after submission?">
+          <ng-template ngbPanelContent>
+              Once a report is submitted, you cannot edit it. However, you can withdraw your report by contacting our support team with the report ID.
+          </ng-template>
+      </ngb-panel>
+      <ngb-panel title="What types of issues can I report?">
+          <ng-template ngbPanelContent>
+              You can report issues related to professionals, services, or packages. This includes inappropriate behavior, poor service quality, or any other concerns you may have.
+          </ng-template>
+      </ngb-panel>
+  </ngb-accordion>
+
+  <form (ngSubmit)="reportEntity()" class="mt-4">
+      <div class="mb-3">
+          <label for="reportType" class="form-label">Report Type</label>
+          <select class="form-control" id="reportType" [(ngModel)]="reportModel.reportType" name="reportType" required (change)="loadEntities()">
+              <option value="User">Professional</option>
+              <option value="Service">Service</option>
+              <option value="Package">Package</option>
+          </select>
+      </div>
+      <div class="mb-3" *ngIf="entities.length > 0">
+          <label for="reportedEntityId" class="form-label">Select Entity</label>
+          <select class="form-control" id="reportedEntityId" [(ngModel)]="reportModel.reportedEntityId" name="reportedEntityId" required>
+              <option *ngFor="let entity of entities" [value]="entity.id">{{ entity.name }}</option>
+          </select>
+      </div>
+      <div class="mb-3">
+          <label for="reason" class="form-label">Reason</label>
+          <textarea class="form-control" id="reason" [(ngModel)]="reportModel.reason" name="reason" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit Report</button>
+  </form>
+</div> -->

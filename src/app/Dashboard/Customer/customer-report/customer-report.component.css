@@ -1,0 +1,43 @@
+.accordion .card-header {
+    cursor: pointer;
+}
+
+.accordion .btn-link {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.accordion .btn-link:hover {
+    text-decoration: underline;
+}
+
+.accordion .card-body {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    transition: max-height 0.5s ease-out;
+}
+
+.form-label {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.form-control {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}

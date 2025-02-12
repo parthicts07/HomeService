@@ -1,0 +1,97 @@
+<!-- <div class="container mt-4" style="margin-left: 250px; width: 80%;">
+    <h2 class="text-center">Packages</h2>
+    <button class="btn btn-success mb-4" (click)="addPackage()">Add New Package</button>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let package of packages">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">{{ package.packageName }}</h5>
+            <p class="card-text">Price: {{ package.price }}</p>
+            <p class="card-text">{{ package.details }}</p>
+            <button class="btn btn-primary me-3" (click)="editPackage(package.packageId)">Edit</button>
+            <button class="btn btn-danger" (click)="deletePackage(package.packageId)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="container mt-4" style="margin-left: 250px; width: 80%;">
+    <h2 class="text-center">Packages</h2>
+    <button class="btn btn-success mb-4" (click)="showAddPackageModal()">Add New Package</button>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let package of packages">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">{{ package.packageName }}</h5>
+            <p class="card-text">Price: {{ package.price }}</p>
+            <p class="card-text">{{ package.details }}</p>
+            <button class="btn btn-primary me-3" (click)="editPackage(package.packageId)">Edit</button>
+            <button class="btn btn-danger" (click)="deletePackage(package.packageId)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Add Package Modal -->
+  <div class="modal" tabindex="-1" *ngIf="isAddPackageModalVisible">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Package</h5>
+          <button type="button" class="btn-close" (click)="hideAddPackageModal()"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="addPackageForm" (ngSubmit)="addPackage()">
+            <div class="mb-3">
+              <label for="packageName" class="form-label">Package Name</label>
+              <input type="text" class="form-control" id="packageName" formControlName="packageName">
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Price</label>
+              <input type="number" class="form-control" id="price" formControlName="price">
+            </div>
+            <div class="mb-3">
+              <label for="details" class="form-label">Details</label>
+              <textarea class="form-control" id="details" formControlName="details"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Package</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Edit Package Modal -->
+  <div class="modal" tabindex="-1" *ngIf="isEditPackageModalVisible">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Package</h5>
+          <button type="button" class="btn-close" (click)="hideEditPackageModal()"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="editPackageForm" (ngSubmit)="updatePackage()">
+            <div class="mb-3">
+              <label for="packageName" class="form-label">Package Name</label>
+              <input type="text" class="form-control" id="packageName" formControlName="packageName">
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Price</label>
+              <input type="number" class="form-control" id="price" formControlName="price">
+            </div>
+            <div class="mb-3">
+              <label for="details" class="form-label">Details</label>
+              <textarea class="form-control" id="details" formControlName="details"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="serviceId" class="form-label">Service Id</label>
+                <input type="number" class="form-control" id="serviceId" formControlName="serviceId">
+            </div>
+            <button type="submit" class="btn btn-primary">Update Package</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

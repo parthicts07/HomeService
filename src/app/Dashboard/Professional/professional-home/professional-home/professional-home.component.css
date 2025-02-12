@@ -1,0 +1,70 @@
+:host {
+  background-color: #0e1217; 
+  height: 100%;
+  color: #ecf0f1; 
+  display: flex;
+}
+
+.navbar {
+  width: 200px;
+  background-color: #253544;
+  color: white;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+
+.container {
+  margin-left: 260px; 
+  width: calc(100% - 260px); 
+}
+
+.header-bar {
+  background-image: linear-gradient(to right, #1f2a36, #1a242f); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px; 
+  color: white;
+  position: fixed; 
+  margin-left: -32px;
+  width : 81%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  width: 50px; 
+  height: 50px;
+}
+
+.welcome-message {
+  margin-top: 80px; 
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: transform 0.2s;
+  background-color: #222d3a89;
+  color: #ecf0f1;
+  height: 100%;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-img-top {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

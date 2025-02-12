@@ -1,0 +1,83 @@
+<!-- <div class="container mt-4">
+  <h2 class="text-center">Appointments</h2>
+  <mat-calendar #calendar [dateClass]="dateClass" (selectedChange)="selectedDate = $event"></mat-calendar>
+
+  <div *ngIf="selectedDate">
+    <h3 style="margin-left: 200px;">Bookings for {{ selectedDate | date }}</h3>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th (click)="sortTable('customerId')">Customer ID</th>
+            <th (click)="sortTable('packageId')">Package ID</th>
+            <th (click)="sortTable('serviceAppointmentDate')">Appointment Date</th>
+            <th (click)="sortTable('status')">Status</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr *ngFor="let booking of getBookingsForDate(selectedDate)" [ngClass]="getStatusClass(booking.status)">
+            <td>{{ booking.customerId }}</td>
+            <td>{{ booking.packageId }}</td>
+            <td>{{ booking.serviceAppointmentDate | date: 'short' }}</td>
+            <td>{{ booking.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <nav>
+        <ul class="pagination justify-content-center">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
+          </li>
+          <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+            <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+          </li>
+          <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div> -->
+
+<div class="container mt-4">
+  <h2 class="text-center">Appointments</h2>
+  <mat-calendar #calendar [dateClass]="dateClass" (selectedChange)="selectedDate = $event"></mat-calendar>
+
+  <div *ngIf="selectedDate">
+    <h3 class="text-center mt-4">Bookings for {{ selectedDate | date }}</h3>
+    <div class="table-responsive" style="margin-left: 90px;">
+      <table class="table table-bordered table-hover table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th (click)="sortTable('customerId')">Customer ID</th>
+            <th (click)="sortTable('packageId')">Package ID</th>
+            <th (click)="sortTable('serviceAppointmentDate')">Appointment Date</th>
+            <th (click)="sortTable('status')">Status</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr *ngFor="let booking of getBookingsForDate(selectedDate)" [ngClass]="getStatusClass(booking.status)">
+            <td>{{ booking.customerId }}</td>
+            <td>{{ booking.packageId }}</td>
+            <td>{{ booking.serviceAppointmentDate | date: 'short' }}</td>
+            <td>{{ booking.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <nav>
+        <ul class="pagination justify-content-center">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
+          </li>
+          <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+            <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+          </li>
+          <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

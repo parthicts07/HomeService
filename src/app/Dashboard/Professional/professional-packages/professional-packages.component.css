@@ -1,0 +1,11 @@
+.modal {
+    display: block; /* Ensure the modal is displayed */
+    background: rgba(0, 0, 0, 0.5); /* Add a background overlay */
+  }
+  
+  .modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100% - 1rem);
+  }

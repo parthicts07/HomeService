@@ -1,0 +1,97 @@
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+        
+<div class="form-container">
+    <div class="form-wrapper" [ngClass]="{ 'flipped': isRotated }">
+
+        <div class="form login-form">
+            <h3>Login Here</h3>
+            <form #formLogin="ngForm" (ngSubmit)="onLogin()">
+                <label for="userName">Username</label>
+                <input type="text" class="form-control" [(ngModel)]="loginForm.userName" name="userName">
+
+                <label for="password">Password</label>
+                <input type="password" class="form-control" [(ngModel)]="loginForm.password" name="password">
+                <button class="button" type="submit">Log In</button>
+            </form>
+            <a class="button switch-btn" (click)="toggleForm()">Don't have a account? Create one</a>
+        </div>
+
+        <div class="form signup-form">
+            <h3>Create Account</h3>
+            <form #formSignUp="ngForm" (ngSubmit)="onSignUp()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="userName">Username</label>
+                        <input type="text" class="form-control" [(ngModel)]="signupForm.userName" name="userName">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" [(ngModel)]="signupForm.password" name="password">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="professionalName">FullName</label>
+                        <input type="text" class="form-control" [(ngModel)]="signupForm.professionalName" name="professionalName">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" [(ngModel)]="signupForm.email" name="email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="mobileNumber">Mobile</label>
+                        <input type="text" class="form-control" [(ngModel)]="signupForm.mobileNumber" name="mobileNumber">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="experienceYears">Experience Years</label>
+                        <input type="number" class="form-control" [(ngModel)]="signupForm.experienceYears" name="experienceYears">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="bio">Bio</label>
+                        <textarea class="form-control" [(ngModel)]="signupForm.bio" name="bio"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="skills">Skills</label>
+                        <input type="text" class="form-control" [(ngModel)]="signupForm.skills" name="skills">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="service">Service</label>
+                        <select class="form-control" [(ngModel)]="signupForm.service" name="service" required>
+                            <option value="plumbing">Plumbing</option>
+                            <option value="electrical">Electrical</option>
+                            <option value="cleaning">Cleaning</option>
+                            <option value="gardening">Gardening</option>
+                            <option value="painting">Painting</option>
+                            <option value="carpentry">Carpentry</option>
+                            <option value="pestControl">Pest Control</option>
+                            <option value="applianceRepair">Appliance Repair</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="nationality" [(ngModel)]="signupForm.nationality" name="nationality">Nationality</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="aadhaarCard">Aadhaar</label>
+                        <input type="text" class="form-control" [(ngModel)]="signupForm.aadhaarCard" name="aadhaarCard">
+                    </div>
+                </div>
+                <button class="button create" type="submit">Create Account</button>
+            </form>
+            <a class="button switch-btn" (click)="toggleForm()">Already have an account? Log in</a>
+        </div>
+    </div>
+</div>
+    
+        

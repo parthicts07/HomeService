@@ -1,0 +1,30 @@
+.animated-button {
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.animated-button:hover {
+  transform: scale(1.05);
+  background-color: #5a6268;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #fff;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+  border-color: #d39e00;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: #fff;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}

@@ -1,0 +1,98 @@
+<!-- <div class="container mt-4">
+    <div class="modal-content classy-modal">
+      <div class="modal-header bg-gradient-dark text-white">
+        <h5 class="modal-title">Exclusive Packages</h5>
+      </div>
+      <div class="modal-body">
+        <div class="service-details mb-4 p-3 rounded glossy-info-card">
+          <h5 class="text-primary font-weight-bold">{{ serviceDetails.serviceName }}</h5>
+          <p class="text-secondary">{{ serviceDetails.description }}</p>
+          <p class="text-muted"><strong>Professional:</strong> {{ serviceDetails.professionalName }}</p>
+        </div>
+        <div class="row">
+          <div class="col-md-6" *ngFor="let package of packages">
+            <div class="card mb-4 glossy-package-card">
+              <div class="card-body">
+                <h5 class="card-title text-dark font-weight-bold">{{ package.packageName }}</h5>
+                <p class="card-text text-muted">{{ package.details }}</p>
+                <p class="card-text"><strong>Price:</strong> <span class="text-success">{{ package.price }}</span></p>
+                <p class="card-text"><strong>Rating:</strong> {{ ratings[package.packageId].averageRating || 'No rating available' }}</p>
+                <div *ngIf="ratings[package.packageId] && ratings[package.packageId]?.reviews?.length; else noReviews">
+                  <h6 class="text-info">Customer Reviews:</h6>
+                  <ul class="list-unstyled">
+                    <li *ngFor="let review of ratings[package.packageId].reviews" class="review-item">
+                      <span class="text-dark">{{ review.comment }}</span> - <strong class="text-warning">{{ review.ratingValue }} stars</strong>
+                    </li>
+                  </ul>
+                </div>
+                <ng-template #noReviews>
+                  <p class="text-muted">No reviews available</p>
+                </ng-template>
+                <button type="button" class="btn btn-gradient-primary mt-2" (click)="showBookingForm(package)">Buy Now</button>
+                <div *ngIf="package.showBookingForm" class="mt-3">
+                  <label for="appointmentDate">Choose Appointment Date:</label>
+                  <input type="datetime-local" [(ngModel)]="package.serviceAppointmentDate" class="form-control mb-2" id="appointmentDate" name="appointmentDate">
+                  <button type="button" class="btn btn-success mt-2" (click)="confirmBooking(package)">Confirm Booking</button>
+                </div>
+  
+                <div *ngIf="package.bookingResponse" class="alert mt-3" [ngClass]="{'alert-success':package.bookingResponse.success, 'alert-danger':!package.bookingResponse.success}">
+                  {{ package.bookingResponse.message }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+  <div class="container mt-4 page-container">
+    <div class="modal-content classy-modal">
+      <div class="modal-header page-header">
+        <h5 class="modal-title">Exclusive Packages</h5>
+      </div>
+      <div class="modal-body page-body">
+        <div class="service-details mb-4 p-3 rounded glossy-info-card">
+          <h5 class="text-primary font-weight-bold">{{ serviceDetails.serviceName }}</h5>
+          <p class="text-secondary">{{ serviceDetails.description }}</p>
+          <p class="text-muted"><strong>Professional:</strong> {{ serviceDetails.professionalName }}</p>
+        </div>
+        <div class="row">
+          <div class="col-md-6" *ngFor="let package of packages">
+            <div class="card mb-4 glossy-package-card">
+              <div class="card-body">
+                <h5 class="card-title text-dark font-weight-bold">{{ package.packageName }}</h5>
+                <p class="card-text text-muted">{{ package.details }}</p>
+                <p class="card-text"><strong>Price:</strong> <span class="text-success">{{ package.price }}</span></p>
+                <p class="card-text"><strong>Rating:</strong> {{ ratings[package.packageId].averageRating || 'No rating available' }}</p>
+                <div *ngIf="ratings[package.packageId] && ratings[package.packageId]?.reviews?.length; else noReviews">
+                  <h6 class="text-info">Customer Reviews:</h6>
+                  <ul class="list-unstyled">
+                    <li *ngFor="let review of ratings[package.packageId].reviews" class="review-item">
+                      <span class="text-dark">{{ review.comment }}</span> - <strong class="text-warning">{{ review.ratingValue }} stars</strong>
+                    </li>
+                  </ul>
+                </div>
+                <ng-template #noReviews>
+                  <p class="text-muted">No reviews available</p>
+                </ng-template>
+                <button type="button" class="btn btn-gradient-primary mt-2" (click)="showBookingForm(package)">Buy Now</button>
+                <div *ngIf="package.showBookingForm" class="mt-3">
+                  <label for="appointmentDate">Choose Appointment Date:</label>
+                  <input type="datetime-local" [(ngModel)]="package.serviceAppointmentDate" class="form-control mb-2" id="appointmentDate" name="appointmentDate">
+                  <button type="button" class="btn btn-success mt-2" (click)="confirmBooking(package)">Confirm Booking</button>
+                </div>
+                <div *ngIf="package.bookingResponse" class="alert mt-3" [ngClass]="{'alert-success':package.bookingResponse.success, 'alert-danger':!package.bookingResponse.success}">
+                  {{ package.bookingResponse.message }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer page-footer">
+        <!-- Add any footer content here if needed -->
+      </div>
+    </div>
+  </div>

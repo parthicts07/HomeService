@@ -1,0 +1,164 @@
+/* :root {
+    --font-family-sans-serif: "Open Sans", sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family-sans-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    background-color: #e9edf4;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #dbdbdb;
+}
+
+.dashboard-nav {
+    width: 60px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background-color: #443ea2;
+    color: #fff;
+    transition: width 0.3s;
+}
+
+.dashboard-nav:hover {
+    width: 240px;
+}
+
+.dashboard-nav header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dashboard-nav-item {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s, transform 0.3s;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.dashboard-nav-item i {
+    margin-right: 10px;
+    min-width: 20px;
+    text-align: center;
+}
+
+.dashboard-nav-item:hover, .dashboard-nav-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(10px);
+}
+
+.nav-text, .brand-text {
+    display: none;
+    margin-left: 10px;
+}
+
+.dashboard-nav:hover .nav-text, .dashboard-nav:hover .brand-text {
+    display: inline;
+}
+
+.nav-item-divider {
+    height: 1px;
+    margin: 1rem 0;
+    background-color: rgba(236, 238, 239, 0.3);
+} */
+
+:root {
+    --font-family-sans-serif: "Open Sans", sans-serif;
+    --primary-color: #0e1217;
+    --secondary-color: #0e1217;
+    --hover-color: #fffafa;
+    --background-color: #0e1217;
+    --text-color: #ffffff;
+  }
+  
+  body {
+    margin: 0;
+    font-family: var(--font-family-sans-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--background-color);
+  }
+  
+  a {
+    color: var(--text-color);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #dbdbdb;
+  }
+  
+  .dashboard-nav {
+    width: 240px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #0e1217;
+    color: rgb(255, 255, 255);
+    border-right: 1px solid #dbdbdb;
+  }
+  
+  .dashboard-nav header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .dashboard-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .dashboard-nav-item {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s, transform 0.3s;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .dashboard-nav-item i {
+    margin-right: 10px;
+    min-width: 20px;
+    text-align: center;
+  }
+  
+  .dashboard-nav-item:hover,
+  .dashboard-nav-item.active {
+    /* background-color: var(--hover-color); */
+    background-color: #cfcccca9;
+    /* transform: translateX(10px); */
+  }
+  
+  .nav-item-divider {
+    height: 1px;
+    margin: 1rem 0;
+    background-color: rgba(236, 238, 239, 0.3);
+  }

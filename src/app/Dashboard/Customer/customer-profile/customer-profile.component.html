@@ -1,0 +1,279 @@
+<!-- <div class="container mt-4">
+    <div class="card" *ngIf="!isEditing && !isChangingPassword">
+      <div class="card-header bg-primary text-white">
+        <h3>Customer Profile</h3>
+      </div>
+      <div class="card-body">
+        <div class="row profile-details">
+          <div class="col-md-6">
+            <p><strong>Name:</strong> {{ customer.customerName }}</p>
+            <p><strong>Email:</strong> {{ customer.email }}</p>
+            <p><strong>Mobile:</strong> {{ customer.mobileNumber || 'N/A' }}</p>
+          </div>
+          <div class="col-md-6">
+            <p><strong>Address:</strong> {{ customer.address || 'N/A' }}</p>
+            <p><strong>City:</strong> {{ customer.city || 'N/A' }}</p>
+            <p><strong>State:</strong> {{ customer.state || 'N/A' }}</p>
+            <p><strong>Zip Code:</strong> {{ customer.zipCode || 'N/A' }}</p>
+          </div>
+        </div>
+        <div class="mt-3">
+            <button class="btn btn-primary me-2" (click)="toggleEditForm()">
+              Edit Profile
+            </button>
+            <button class="btn btn-warning me-2" (click)="toggleChangePasswordForm()">
+              Change Password
+            </button>
+            <button class="btn btn-secondary" (click)="goToHome()">
+              Back to Home
+            </button>
+          </div>
+      </div>
+    </div>
+  
+    <div class="card" *ngIf="isEditing">
+      <div class="card-header bg-success text-white">
+        <h3>Edit Profile</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="editProfileForm" (ngSubmit)="onSubmitEditProfile()">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              formControlName="email"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="customerName" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="customerName"
+              formControlName="customerName"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="mobileNumber" class="form-label">Mobile Number</label>
+            <input
+              type="text"
+              class="form-control"
+              id="mobileNumber"
+              formControlName="mobileNumber"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              formControlName="address"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="city" class="form-label">City</label>
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              formControlName="city"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="state" class="form-label">State</label>
+            <input
+              type="text"
+              class="form-control"
+              id="state"
+              formControlName="state"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="zipCode" class="form-label">Zip Code</label>
+            <input
+              type="text"
+              class="form-control"
+              id="zipCode"
+              formControlName="zipCode"
+            />
+          </div>
+          <button type="submit" class="btn btn-success me-2">Save Changes</button>
+          <button type="button" class="btn btn-secondary me-2" (click)="toggleEditForm()">Back</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card" *ngIf="isChangingPassword">
+      <div class="card-header bg-warning text-white">
+          <h3>Change Password</h3>
+      </div>
+      <div class="card-body">
+          <form [formGroup]="changePasswordForm" (ngSubmit)="onSubmitChangePassword()">
+              <div class="mb-3">
+                  <label for="oldPassword" class="form-label">Old Password</label>
+                  <input
+                      type="password"
+                      class="form-control"
+                      id="oldPassword"
+                      formControlName="oldPassword"
+                  />
+                  <div *ngIf="changePasswordForm.get('oldPassword')?.invalid && changePasswordForm.get('oldPassword')?.touched" class="text-danger">
+                      Old password is required.
+                  </div>
+              </div>
+              <div class="mb-3">
+                  <label for="newPassword" class="form-label">New Password</label>
+                  <input
+                      type="password"
+                      class="form-control"
+                      id="newPassword"
+                      formControlName="newPassword"
+                  />
+                  <div *ngIf="changePasswordForm.get('newPassword')?.errors?.['required'] && changePasswordForm.get('newPassword')?.touched" class="text-danger">
+                      New password is required.
+                  </div>
+                  <div *ngIf="changePasswordForm.get('newPassword')?.errors?.['weak'] && changePasswordForm.get('newPassword')?.touched" class="text-danger">
+                      New password must be at least 8 characters long.
+                  </div>
+                  <div *ngIf="changePasswordForm.get('newPassword')?.errors?.['average'] && changePasswordForm.get('newPassword')?.touched" class="text-danger">
+                      New password must include letters, numbers, and special characters.
+                  </div>
+              </div>
+              <div class="mb-3">
+                  <label for="confirmNewPassword" class="form-label">Confirm New Password</label>
+                  <input
+                      type="password"
+                      class="form-control"
+                      id="confirmNewPassword"
+                      formControlName="confirmNewPassword"
+                  />
+                  <div *ngIf="changePasswordForm.get('confirmNewPassword')?.invalid && changePasswordForm.get('confirmNewPassword')?.touched" class="text-danger">
+                      Confirmation password is required.
+                  </div>
+                  <div *ngIf="changePasswordForm.get('newPassword')?.value !== changePasswordForm.get('confirmNewPassword')?.value && changePasswordForm.get('confirmNewPassword')?.touched" class="text-danger">
+                      New password and confirmation do not match.
+                  </div>
+              </div>
+              <button type="submit" class="btn btn-warning me-2">Change Password</button>
+              <button type="button" class="btn btn-secondary me-2" (click)="toggleChangePasswordForm()">Back</button>
+          </form>
+      </div>
+  </div>
+</div> -->
+
+<div class="container mt-4 profile-container">
+  <div class="profile-card" *ngIf="!isEditing && !isChangingPassword">
+    <div class="profile-header">
+      <h1>Customer Profile</h1>
+    </div>
+    <div class="profile-body">
+      <div class="profile-details">
+        <div class="profile-info">
+          <p><strong>Name:</strong> {{ customer.customerName }}</p>
+          <p><strong>Email:</strong> {{ customer.email }}</p>
+          <p><strong>Mobile:</strong> {{ customer.mobileNumber || 'N/A' }}</p>
+        </div>
+        <div class="profile-info">
+          <p><strong>Address:</strong> {{ customer.address || 'N/A' }}</p>
+          <p><strong>City:</strong> {{ customer.city || 'N/A' }}</p>
+          <p><strong>State:</strong> {{ customer.state || 'N/A' }}</p>
+          <p><strong>Zip Code:</strong> {{ customer.zipCode || 'N/A' }}</p>
+        </div>
+      </div>
+      <div class="profile-actions">
+        <button class="btn btn-edit" (click)="toggleEditForm()">Edit Profile</button>
+        <button class="btn btn-change-password" (click)="toggleChangePasswordForm()">Change Password</button>
+        <button class="btn btn-back" (click)="goToHome()">Back to Home</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-card" *ngIf="isEditing">
+    <div class="profile-header">
+      <h3>Edit Profile</h3>
+    </div>
+    <div class="profile-body">
+      <form [formGroup]="editProfileForm" (ngSubmit)="onSubmitEditProfile()">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" formControlName="email" />
+        </div>
+        <div class="form-group">
+          <label for="customerName">Name</label>
+          <input type="text" id="customerName" formControlName="customerName" />
+        </div>
+        <div class="form-group">
+          <label for="mobileNumber">Mobile Number</label>
+          <input type="text" id="mobileNumber" formControlName="mobileNumber" />
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" id="address" formControlName="address" />
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" formControlName="city" />
+        </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <input type="text" id="state" formControlName="state" />
+        </div>
+        <div class="form-group">
+          <label for="zipCode">Zip Code</label>
+          <input type="text" id="zipCode" formControlName="zipCode" />
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-save">Save Changes</button>
+          <button type="button" class="btn btn-back" (click)="toggleEditForm()">Back</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="profile-card" *ngIf="isChangingPassword">
+    <div class="profile-header">
+      <h3>Change Password</h3>
+    </div>
+    <div class="profile-body">
+      <form [formGroup]="changePasswordForm" (ngSubmit)="onSubmitChangePassword()">
+        <div class="form-group">
+          <label for="oldPassword">Old Password</label>
+          <input type="password" id="oldPassword" formControlName="oldPassword" />
+          <div *ngIf="changePasswordForm.get('oldPassword')?.invalid && changePasswordForm.get('oldPassword')?.touched" class="error-message">
+            Old password is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="newPassword">New Password</label>
+          <input type="password" id="newPassword" formControlName="newPassword" />
+          <div *ngIf="changePasswordForm.get('newPassword')?.errors?.['required'] && changePasswordForm.get('newPassword')?.touched" class="error-message">
+            New password is required.
+          </div>
+          <div *ngIf="changePasswordForm.get('newPassword')?.errors?.['weak'] && changePasswordForm.get('newPassword')?.touched" class="error-message">
+            New password must be at least 8 characters long.
+          </div>
+          <div *ngIf="changePasswordForm.get('newPassword')?.errors?.['average'] && changePasswordForm.get('newPassword')?.touched" class="error-message">
+            New password must include letters, numbers, and special characters.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmNewPassword">Confirm New Password</label>
+          <input type="password" id="confirmNewPassword" formControlName="confirmNewPassword" />
+          <div *ngIf="changePasswordForm.get('confirmNewPassword')?.invalid && changePasswordForm.get('confirmNewPassword')?.touched" class="error-message">
+            Confirmation password is required.
+          </div>
+          <div *ngIf="changePasswordForm.get('newPassword')?.value !== changePasswordForm.get('confirmNewPassword')?.value && changePasswordForm.get('confirmNewPassword')?.touched" class="error-message">
+            New password and confirmation do not match.
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-save">Change Password</button>
+          <button type="button" class="btn btn-back" (click)="toggleChangePasswordForm()">Back</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

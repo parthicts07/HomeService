@@ -1,0 +1,41 @@
+  <!-- <div class="container mt-4" style="margin-left: 250px; width: 75%;">
+    <h2 class="text-center mb-4">Payments</h2>
+    <div *ngIf="isLoading" class="alert alert-info">Loading payments...</div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    <div *ngIf="!isLoading && !error && payments.length === 0" class="alert alert-warning">No payments available.</div>
+    <div class="row" *ngIf="!isLoading && !error && payments.length > 0">
+      <div class="col-md-4 mb-4" *ngFor="let payment of payments">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Payment ID: {{ payment.paymentId }}</h5>
+            <p class="card-text">Booking ID: {{ payment.bookingId }}</p>
+            <p class="card-text">Amount: ₹{{ payment.amount }}</p>
+            <p class="card-text">Payment Date: {{ payment.paymentDate | date:'medium' }}</p>
+            <p class="card-text">Payment Method: {{ payment.paymentMethod }}</p>
+            <p class="card-text">Transaction ID: {{ payment.transactionId }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="container mt-4" style="margin-left: 250px; width: 75%;">
+    <h2 class="text-center mb-4" style="font-family: 'Arial', sans-serif; color: #4CAF50; font-size: 36px; font-weight: bold;">Payments</h2>
+    <div *ngIf="isLoading" class="alert alert-info" style="font-family: 'Arial', sans-serif; font-size: 18px;">Loading payments...</div>
+    <div *ngIf="error" class="alert alert-danger" style="font-family: 'Arial', sans-serif; font-size: 18px;">{{ error }}</div>
+    <div *ngIf="!isLoading && !error && payments.length === 0" class="alert alert-warning" style="font-family: 'Arial', sans-serif; font-size: 18px;">No payments available.</div>
+    <div class="row" *ngIf="!isLoading && !error && payments.length > 0">
+      <div class="col-md-4 mb-4" *ngFor="let payment of payments">
+        <div class="card h-100" style="border: 1px solid #4CAF50;">
+          <div class="card-body" style="font-family: 'Arial', sans-serif; font-size: 16px;">
+            <h5 class="card-title" style="color: #4CAF50; font-size: 24px; font-weight: bold;">Payment ID: {{ payment.paymentId }}</h5>
+            <p class="card-text">Booking ID: {{ payment.bookingId }}</p>
+            <p class="card-text">Amount: ₹{{ payment.amount }}</p>
+            <p class="card-text">Payment Date: {{ payment.paymentDate | date:'medium' }}</p>
+            <p class="card-text">Payment Method: {{ payment.paymentMethod }}</p>
+            <p class="card-text">Transaction ID: {{ payment.transactionId }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

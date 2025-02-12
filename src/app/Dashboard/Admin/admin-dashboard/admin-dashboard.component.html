@@ -1,0 +1,8 @@
+<app-admin-navbar></app-admin-navbar>
+
+<div [ngSwitch]="true">
+    <ng-container *ngSwitchCase="isAdminHome">
+        <app-admin-home></app-admin-home>
+    </ng-container>
+</div>
+<router-outlet></router-outlet>

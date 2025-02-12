@@ -1,0 +1,24 @@
+<div class="container mt-4">
+  <div class="header-bar d-flex align-items-center justify-content-end p-3 sticky-top"><a routerLink="/professional/home" style="color: #fff; text-decoration: none;">
+    <img [src]="profile?.profilePictureUrl" alt="Profile Picture" class="profile-picture me-2">
+    <span>{{ profile?.userName }}</span></a>
+  </div>  
+  
+  <div class="welcome-message mt-3">
+    <h2 style="margin-top: 100px;">Welcome, {{ profile?.professionalName }}!</h2>
+    <p>Email: {{ profile?.email }}</p>
+    <p>Service: {{ profile?.service }}</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let service of services">
+      <div class="card h-100">
+        <img *ngIf="service.servicePictureUrl" [src]="service.servicePictureUrl" class="card-img-top" alt="{{ service.serviceName }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ service.serviceName }}</h5>
+          <p class="card-text">{{ service.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

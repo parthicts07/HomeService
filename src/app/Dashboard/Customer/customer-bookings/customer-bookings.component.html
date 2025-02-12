@@ -1,0 +1,170 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">My Bookings</h2>
+    <div class="row">
+      <div *ngFor="let booking of bookings" class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Booking ID: {{ booking.bookingId }}</h5>
+            <p class="card-text">
+              <strong>Professional:</strong> {{ booking.professional.professionalName }}<br>
+              <strong>Package:</strong> {{ booking.package.packageName }} (₹{{ booking.package.price }})<br>
+              <strong>Appointment Date:</strong> {{ booking.serviceAppointmentDate | date:'medium' }}<br>
+              <strong>Service Done Date:</strong>
+              <span *ngIf="booking.serviceDoneDate; else noDate">
+                {{ booking.serviceDoneDate | date:'medium' }}
+              </span>
+              <ng-template #noDate>-</ng-template><br>
+              <strong>Status:</strong>
+              <span [ngClass]="{
+                'text-success': booking.status === 'Completed',
+                'text-warning': booking.status === 'Pending',
+                'text-danger': booking.status === 'Cancelled'
+              }">
+                {{ booking.status }}
+              </span>
+            </p>
+          </div>
+          <div class="card-footer bg-transparent">
+            <button *ngIf="booking.status === 'Pending'" class="btn btn-danger w-100 mb-2" (click)="cancelBooking(booking.bookingId)">
+              <i class="fas fa-times-circle me-2"></i>Cancel Booking
+            </button>
+
+            <button *ngIf="booking.status === 'Pending'" class="btn btn-warning w-100 mb-2" (click)="openRescheduleForm(booking.bookingId)">
+              <i class="fas fa-calendar-alt me-2"></i>Reschedule Booking
+            </button>
+
+            <button *ngIf="booking.status === 'Completed'" class="btn btn-success w-100 mb-2" (click)="openPaymentModal(booking.bookingId)">
+                <i class="fas fa-credit-card me-2"></i>Pay Now
+              </button>
+
+            <button *ngIf="booking.status === 'Completed'" class="btn btn-info w-100 mb-2" (click)="openRatingForm(booking.package.packageId)">
+              <i class="fas fa-star me-2"></i>Rate Package
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="selectedBookingId !== null" class="modal fade show" style="display: block; background: rgba(0, 0, 0, 0.5);">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Reschedule Booking</h5>
+            <button type="button" class="btn-close" (click)="selectedBookingId = null"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="rescheduleForm">
+              <div class="mb-3">
+                <label for="newDate" class="form-label">New Appointment Date</label>
+                <input type="datetime-local" class="form-control" id="newDate" formControlName="newDate" required>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="selectedBookingId = null">Close</button>
+            <button type="button" class="btn btn-primary" (click)="rescheduleBooking(selectedBookingId)">Reschedule</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="ratingForm.get('packageId')?.value" class="modal fade show" style="display: block; background: rgba(0, 0, 0, 0.5);">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Rate Package</h5>
+            <button type="button" class="btn-close" (click)="ratingForm.reset()"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="ratingForm">
+              <div class="mb-3">
+                <label for="ratingValue" class="form-label">Rating (1-5)</label>
+                <input type="number" class="form-control" id="ratingValue" formControlName="ratingValue" min="1" max="5" required>
+              </div>
+              <div class="mb-3">
+                <label for="comment" class="form-label">Comment</label>
+                <textarea class="form-control" id="comment" formControlName="comment" required></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="ratingForm.reset()">Close</button>
+            <button type="button" class="btn btn-primary" (click)="ratePackage(ratingForm.get('packageId')?.value)">Submit Rating</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="showPaymentModal" class="modal fade show" style="display: block; background: rgba(0, 0, 0, 0.5);">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Make Payment</h5>
+              <button type="button" class="btn-close" (click)="closePaymentModal()"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="paymentForm">
+                <div class="mb-3">
+                  <label for="paymentMethod" class="form-label">Payment Method</label>
+                  <select class="form-control" id="paymentMethod" formControlName="paymentMethod" required>
+                    <option value="">Select Payment Method</option>
+                    <option value="Net Banking">Net Banking</option>
+                    <option value="UPI">UPI</option>
+                    <option value="Debit Card">Debit Card</option>
+                    <option value="Credit Card">Credit Card</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="transactionId" class="form-label">Transaction ID</label>
+                  <input type="text" class="form-control" id="transactionId" formControlName="transactionId" required>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="closePaymentModal()">Close</button>
+              <button type="button" class="btn btn-primary" (click)="submitPayment()">Submit Payment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+
+
+
+  <!-- <div class="container mt-4">
+    <h2 class="text-center mb-4">My Bookings</h2>
+    <div class="row">
+      <div *ngFor="let booking of bookings" class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Booking ID: {{ booking.bookingId }}</h5>
+            <p class="card-text">
+              <strong>Professional:</strong> {{ booking.professional.professionalName }}<br>
+              <strong>Package:</strong> {{ booking.package.packageName }} (₹{{ booking.package.price }})<br>
+              <strong>Appointment Date:</strong> {{ booking.serviceAppointmentDate | date:'medium' }}<br>
+              <strong>Service Done Date:</strong>
+              <span *ngIf="booking.serviceDoneDate; else noDate">
+                {{ booking.serviceDoneDate | date:'medium' }}
+              </span>
+              <ng-template #noDate>-</ng-template><br>
+              <strong>Status:</strong>
+              <span [ngClass]="{
+                'text-success': booking.status === 'Completed',
+                'text-warning': booking.status === 'Pending',
+                'text-danger': booking.status === 'Cancelled'
+              }">
+                {{ booking.status }}
+              </span>
+            </p>
+          </div>
+          <div class="card-footer bg-transparent">
+            <button *ngIf="booking.status === 'Completed'" class="btn btn-primary w-100" (click)="payNow(booking.bookingId)">
+              <i class="fas fa-credit-card me-2"></i>Pay Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->

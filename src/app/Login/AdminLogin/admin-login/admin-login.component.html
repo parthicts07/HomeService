@@ -1,0 +1,28 @@
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<div class="login-container">
+    <form class="login" id="loginForm" (ngSubmit)="onLoginSubmit()">
+        <h3>Admin Login</h3>
+        <label for="username">Username</label>
+        <input type="text" placeholder="Username" id="username" [(ngModel)]="userName" name="username" required>
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" [(ngModel)]="password" name="password" required>
+        <label for="mobile">Mobile Number</label>
+        <input type="text" placeholder="Mobile Number" id="mobile" [(ngModel)]="mobileNumber" name="mobile" required>
+        <button type="submit">Next</button>
+    </form>
+    <form class="login" id="captchaForm" style="display: none;" (ngSubmit)="onCaptchaSubmit()">
+        <h3>Verify Captcha</h3>
+        <button type="button" (click)="generateCaptcha()">Generate Captcha</button>
+        <div *ngIf="captcha">
+            <p>Captcha: {{ captcha }}</p>
+        </div>
+        <label for="enteredCaptcha">Enter Captcha</label>
+        <input type="text" placeholder="Enter Captcha" id="enteredCaptcha" [(ngModel)]="enteredCaptcha" name="enteredCaptcha" required>
+        <label for="otp">Enter OTP</label>
+        <input type="text" placeholder="OTP" id="otp" [(ngModel)]="otp" name="otp" required>
+        <button type="submit">Submit</button>
+    </form>
+</div>

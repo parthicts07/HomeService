@@ -1,0 +1,77 @@
+  :host {
+    background-color: #0e1217; 
+    height: 100%;
+    color: #ecf0f1; 
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card {
+    color: #ecf0f1;
+    background-color: #212b38de; 
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .modal {
+    display: block; 
+    background: rgba(0, 0, 0, 0.5); 
+  }
+
+  .modal-header, .modal-body {
+    background-color: #012654cb;
+    border: 1px solid #ccc;
+  }
+  
+  .modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100% - 1rem);
+  }
+  
+  .btn-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    background-color: #dc3545;
+  }
+  
+  .btn-close:hover {
+    color: #dc3545;
+  }
+  
+  .form-control {
+    margin-bottom: 1rem;
+  }
+
+  .add-service {
+    background-color: #f74d94;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .add-service:hover {
+    background-color: #f74d94;
+    box-shadow: 0 0 10px rgba(245, 58, 146, 0.715);
+  }
+
+  input, textarea{
+    background-color: transparent;
+  }

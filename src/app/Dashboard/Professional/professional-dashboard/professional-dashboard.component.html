@@ -1,0 +1,10 @@
+<app-professional-navbar></app-professional-navbar>
+
+<div [ngSwitch]="true">
+    <ng-container *ngSwitchCase="isProfessionalHome">
+        <app-customer-home></app-customer-home>
+    </ng-container>
+    <!-- <ng-container *ngSwitchCase="isCustomerPackage">
+        <app-customer-package></app-customer-package>
+    </ng-container> -->
+</div>

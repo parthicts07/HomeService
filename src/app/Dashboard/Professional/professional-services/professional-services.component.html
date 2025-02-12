@@ -1,0 +1,50 @@
+  <div class="container mt-4" style="margin-left: 250px; width: 80%;">
+    <h2 class="text-center mb-4">Services</h2>
+    <div class="row">
+      <button class="btn add-service mb-3" (click)="showAddServiceModal()">Add Service</button>
+      <div class="col-md-4 mb-4" *ngFor="let service of services">
+        <div class="card h-100">
+          <img *ngIf="service.servicePictureUrl" [src]="service.servicePictureUrl" class="card-img-top" alt="{{ service.serviceName }}">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ service.serviceName }}</h5>
+            <p class="card-text">{{ service.description }}</p>
+            <div class="mt-auto">
+              <button class="btn btn-secondary me-2" (click)="viewDetails(service.serviceId)">View Details</button>
+              <button class="btn btn-primary me-2" (click)="toggleUpdateServicePictureForm(service.serviceId)">Update Photo</button>
+              <div *ngIf="isUpdatingServicePicture && serviceIdToUpdate === service.serviceId">
+                <form (ngSubmit)="onSubmitUpdateServicePicture()">
+                  <input type="file" class="form-control mb-2" (change)="onFileSelected($event)">
+                  <button type="submit" class="btn btn-info me-2">Upload</button>
+                  <button type="button" class="btn btn-secondary me-2" (click)="toggleUpdateServicePictureForm(service.serviceId)">Back</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal" tabindex="-1" *ngIf="isAddServiceModalVisible">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Add Service</h2>
+          <button type="button" class="btn-close" (click)="hideAddServiceModal()" style="color: white;">X</button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="addServiceForm" (ngSubmit)="onSubmitAddService()">
+            <div class="mb-3">
+              <label for="serviceName" class="form-label">Service Name</label>
+              <input type="text" class="form-control" id="serviceName" formControlName="serviceName">
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Service Description</label>
+              <textarea class="form-control" id="description" formControlName="description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Service</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

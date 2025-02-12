@@ -1,0 +1,136 @@
+<div class="container mt-4" style="margin-left: 260px; width: 75%; ">
+  <div class="card shadow-lg" *ngIf="!isEditing && !isChangingPassword && !isUpdatingProfilePicture">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+      <h3 class="mb-0">Professional Profile</h3>
+      <i class="fas fa-user-circle fa-2x"></i>
+    </div>
+    <div class="card-body" *ngIf="profile">
+      <div class="row profile-details">
+        <div class="col-md-6">
+          <p><strong>Name:</strong> {{ profile.professionalName }}</p>
+          <p><strong>Email:</strong> {{ profile.email }}</p>
+          <p><strong>Mobile:</strong> {{ profile.mobileNumber || 'N/A' }}</p>
+          <p><strong>Experience:</strong> {{ profile.experienceYears }} years</p>
+          <p><strong>Skills:</strong> {{ profile.skills }}</p>
+          <p><strong>Service:</strong> {{ profile.service }}</p>
+          <p><strong>Nationality:</strong> {{ profile.nationality }}</p>
+          <p><strong>Aadhaar Card:</strong> {{ profile.aadhaarCard }}</p>
+        </div>
+        <div class="col-md-6 text-center">
+          <img [src]="profile.profilePictureUrl" alt="Profile Picture" class="profile-picture rounded-circle img-thumbnail mb-3" style="width: 150px; height: 150px;">
+        </div>
+      </div>
+      <div class="mt-3 d-flex justify-content-center">
+        <button class="btn btn-primary me-2 animated-button" (click)="toggleEditForm()">
+          <i class="fas fa-edit"></i> Edit Profile
+        </button>
+        <button class="btn btn-warning me-2 animated-button" (click)="toggleChangePasswordForm()">
+          <i class="fas fa-key"></i> Change Password
+        </button>
+        <button class="btn btn-secondary animated-button" (click)="toggleUpdateProfilePictureForm()">
+          <i class="fas fa-camera"></i> Update Profile Picture
+        </button>
+      </div>
+    </div>
+  </div>
+  
+    <div class="card" *ngIf="isEditing">
+      <div class="card-header bg-success text-white">
+        <h3>Edit Profile</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="editProfileForm" (ngSubmit)="onSubmitEditProfile()">
+          <div class="mb-3">
+            <label for="professionalName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="professionalName" formControlName="professionalName">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email">
+          </div>
+          <div class="mb-3">
+            <label for="mobileNumber" class="form-label">Mobile Number</label>
+            <input type="text" class="form-control" id="mobileNumber" formControlName="mobileNumber">
+          </div>
+          <div class="mb-3">
+            <label for="experienceYears" class="form-label">Experience Years</label>
+            <input type="number" class="form-control" id="experienceYears" formControlName="experienceYears">
+          </div>
+          <div class="mb-3">
+            <label for="bio" class="form-label">Bio</label>
+            <textarea class="form-control" id="bio" formControlName="bio"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="skills" class="form-label">Skills</label>
+            <input type="text" class="form-control" id="skills" formControlName="skills">
+          </div>
+          <div class="mb-3">
+            <label for="service" class="form-label">Service</label>
+            <input type="text" class="form-control" id="service" formControlName="service">
+          </div>
+          <div class="mb-3">
+            <label for="nationality" class="form-label">Nationality</label>
+            <input type="text" class="form-control" id="nationality" formControlName="nationality">
+          </div>
+          <div class="mb-3">
+            <label for="aadhaarCard" class="form-label">Aadhaar Card</label>
+            <input type="text" class="form-control" id="aadhaarCard" formControlName="aadhaarCard">
+          </div>
+          <button type="submit" class="btn btn-success me-2 animated-button">Save Changes</button>
+          <button type="button" class="btn btn-secondary me-2 animated-button" (click)="toggleEditForm()">Back</button>
+        </form>
+      </div>
+    </div>
+  
+    <div class="card" *ngIf="isChangingPassword">
+      <div class="card-header bg-warning text-white">
+        <h3>Change Password</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="changePasswordForm" (ngSubmit)="onSubmitChangePassword()">
+          <div>
+            <label for="oldPassword">Old Password</label>
+            <input id="oldPassword" formControlName="oldPassword" type="password" />
+            <div *ngIf="changePasswordForm.get('oldPassword')?.invalid && changePasswordForm.get('oldPassword')?.touched">
+              <small *ngIf="changePasswordForm.get('oldPassword')?.errors?.['required']">Old Password is required.</small>
+            </div>
+          </div>
+          <div>
+            <label for="newPassword">New Password</label>
+            <input id="newPassword" formControlName="newPassword" type="password" />
+            <div *ngIf="changePasswordForm.get('newPassword')?.invalid && changePasswordForm.get('newPassword')?.touched">
+              <small *ngIf="changePasswordForm.get('newPassword')?.errors?.['required']">New Password is required.</small>
+              <small *ngIf="changePasswordForm.get('newPassword')?.errors?.['weak']">Password is too weak. It must be at least 8 characters long.</small>
+              <small *ngIf="changePasswordForm.get('newPassword')?.errors?.['average']">Password must contain letters, numbers, and special characters.</small>
+            </div>
+          </div>
+          <div>
+            <label for="confirmNewPassword">Confirm New Password</label>
+            <input id="confirmNewPassword" formControlName="confirmNewPassword" type="password" />
+            <div *ngIf="changePasswordForm.get('confirmNewPassword')?.invalid && changePasswordForm.get('confirmNewPassword')?.touched">
+              <small *ngIf="changePasswordForm.get('confirmNewPassword')?.errors?.['required']">Confirm New Password is required.</small>
+            </div>
+            <div *ngIf="changePasswordForm.errors?.['passwordsMismatch'] && changePasswordForm.get('confirmNewPassword')?.touched">
+              <small>Passwords do not match.</small>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-warning me-2 animated-button">Change Password</button>
+          <button type="button" class="btn btn-secondary me-2 animated-button" (click)="toggleChangePasswordForm()">Back</button>
+        </form>
+      </div>
+    </div>
+
+  
+    <div class="card" *ngIf="isUpdatingProfilePicture">
+      <div class="card-header bg-info text-white">
+        <h3>Update Profile Picture</h3>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="onSubmitUpdateProfilePicture()">
+          <input type="file" (change)="onFileSelected($event)" class="form-control mb-2">
+          <button type="submit" class="btn btn-info me-2 animated-button">Upload</button>
+          <button type="button" class="btn btn-secondary me-2 animated-button" (click)="toggleUpdateProfilePictureForm()">Back</button>
+        </form>
+      </div>
+    </div>
+  </div>

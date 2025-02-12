@@ -1,0 +1,111 @@
+:host {
+  display: block;
+  height: 100vh;
+  background-color: #080710;
+}
+ 
+.background {
+  width: 430px;
+  height: 520px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+ 
+.background .shape {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  border-radius: 50%;
+}
+ 
+.shape:first-child {
+  background: linear-gradient(#1845ad, #23a2f6);
+  left: -80px;
+  top: -80px;
+}
+ 
+.shape:last-child {
+  background: linear-gradient(to right, #ff512f, #f09819);
+  right: -30px;
+  bottom: -80px;
+}
+ 
+.form-container {
+  position: relative;
+  perspective: 1000px;
+}
+ 
+.form-wrapper {
+  width: 400px;
+  height: 520px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease-in-out;
+  position: relative;
+}
+ 
+.flipped {
+  transform: rotateY(180deg);
+}
+ 
+.form {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.13);
+  position: absolute;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 70px 35px;
+  backface-visibility: hidden;
+  margin-top: 50px;
+}
+ 
+.signup-form {
+  padding-top: 8px;
+  transform: rotateY(180deg);
+}
+ 
+button {
+  margin-top: 50px;
+  width: 100%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create{
+    margin-top: 5px;
+    padding: 7px;
+}
+
+label{
+    color: aliceblue;
+}
+
+h3{
+    color: #ce7b05;
+}
+
+input{
+    background-color: rgba(188, 188, 188, 0.7);
+}
+
+input :active{
+    background-color: rgb(112, 117, 117);
+    box-shadow: #5e5b5b;
+}
+
+input::after{
+    background-color: #5e5b5b;
+}
+
+a{
+    text-decoration: none;
+}

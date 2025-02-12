@@ -1,0 +1,43 @@
+<div class="dashboard-nav">
+    <header>
+      <a [routerLink]="['/professional/home']" class="brand-logo">
+        <img src="../../../../assets/Logo.jpg" alt="App Logo" width="50px" height="40px" class="d-inline-block align-top" style="margin-left: -10px;">
+        <strong><span class="brand-title" style="color: whitesmoke; margin-left: 3px;">Professional Dashboard</span></strong>
+      </a>
+    </header>
+    <nav class="dashboard-nav-list">
+      <a [routerLink]="['/professional/home']" routerLinkActive="active" class="dashboard-nav-item">
+        <i class="fas fa-home"></i>
+        <span class="nav-text">Home</span>
+      </a>
+      <a [routerLink]="['/professional/appointments']" routerLinkActive="active" class="dashboard-nav-item">
+        <i class="fas fa-calendar-alt"></i>
+        <span class="nav-text">Appointments</span>
+      </a>
+      <a [routerLink]="['/professional/ratings']" routerLinkActive="active" class="dashboard-nav-item">
+        <i class="fas fa-file-upload"></i>
+        <span class="nav-text">My Ratings</span>
+      </a>
+      <a [routerLink]="['/professional/service']" routerLinkActive="active" class="dashboard-nav-item">
+        <i class="fas fa-users"></i>
+        <span class="nav-text">My Service</span>
+      </a>
+      <a [routerLink]="['/professional/payments']" routerLinkActive="active" class="dashboard-nav-item">
+        <i class="fas fa-money-check-alt"></i>
+        <span class="nav-text">My Payments</span>
+      </a>
+      <a [routerLink]="['/professional/bookings']" routerLinkActive="active" class="dashboard-nav-item">
+        <i class="fas fa-book"></i>
+        <span class="nav-text">My Bookings</span>
+      </a>
+      <a [routerLink]="['/professional/profile']" routerLinkActive="active" class="dashboard-nav-item">
+        <i class="fas fa-user"></i>
+        <span class="nav-text">Profile</span>
+      </a>
+      <div class="nav-item-divider"></div>
+      <a (click)="logout()" class="dashboard-nav-item" style="color: brown;">
+        <i class="fas fa-sign-out-alt"></i>
+        <span class="nav-text">Logout</span>
+      </a>
+    </nav>
+  </div>
