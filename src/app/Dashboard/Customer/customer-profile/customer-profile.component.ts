@@ -19,6 +19,11 @@ export class CustomerProfileComponent implements OnInit {
   constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
+    const token = localStorage.getItem('custToken');
+    if(!token){
+      alert("Please login to access the dashboard!");
+      this.router.navigateByUrl('/login/customerLogin');
+    }
     this.fetchCustomerProfile();
     this.initForms();
   }

@@ -1,7 +1,9 @@
 <div class="container mt-4">
-  <div class="header-bar d-flex align-items-center justify-content-end p-3 sticky-top"><a routerLink="/professional/home" style="color: #fff; text-decoration: none;">
-    <img [src]="profile?.profilePictureUrl" alt="Profile Picture" class="profile-picture me-2">
-    <span>{{ profile?.userName }}</span></a>
+  <div class="header-bar d-flex align-items-center justify-content-end p-3 sticky-top">
+    <a routerLink="/professional/home" style="color: #fff; text-decoration: none;">
+      <img [src]="profile?.profilePictureUrl" alt="Profile Picture" class="profile-picture me-2">
+      <span>{{ profile?.userName }}</span>
+    </a>
   </div>  
   
   <div class="welcome-message mt-3">
@@ -20,5 +22,29 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-section">
+    <h2>Contact Us</h2>
+    <p><i class="fas fa-user"></i> Parthibakannan S</p>
+    <p><i class="fas fa-phone"></i> Phone: 9123591335</p>
+    <p><i class="fas fa-envelope"></i> Email: parthisivaram45&commat;gmail.com</p>
+    <p><i class="fas fa-map-marker-alt"></i> Location: Coimbatore</p>
+  </div>
+  <div class="footer-section">
+    <h2>Follow Us</h2>
+    <div class="social-media">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+    </div>
+  </div>
+  <div class="footer-section">
+    <h2>Additional Info</h2>
+    <p>Follow us on social media for the latest updates and offers!</p>
+    <p>&copy; 2025 CrewFix. All rights reserved.</p>
   </div>
 </div>

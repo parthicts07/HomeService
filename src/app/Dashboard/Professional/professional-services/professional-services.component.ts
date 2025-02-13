@@ -86,31 +86,6 @@ export class ProfessionalServicesComponent implements OnInit {
     this.router.navigate([`/professional/service/${serviceId}/packages`]);
   }
 
-  // onSubmitAddService() {
-  //   if (this.addServiceForm.invalid) {
-  //     alert('Please fill in all required fields.');
-  //     return;
-  //   }
-  //   const token = localStorage.getItem('profToken');
-  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  //   this.http.post('https://localhost:7001/api/Professional/createService', this.addServiceForm.value, { headers }).subscribe(
-  //     () => {
-  //       this.fetchServices();
-  //       this.addServiceForm.reset();
-  //       this.hideAddServiceModal();
-  //     },
-  //     (error: HttpErrorResponse) => {
-  //       if (error.status === 400) {
-  //         alert('Bad Request. Please check the data you have entered.');
-  //       } else if (error.status === 401) {
-  //         alert('Unauthorized access. Please log in again.');
-  //         this.router.navigateByUrl('login/professionalLogin');
-  //       } else {
-  //         alert('Error creating service. Please try again later.');
-  //       }
-  //     }
-  //   );
-  // }
 
   onSubmitAddService(): void {
     if (this.addServiceForm.invalid) {
@@ -181,35 +156,6 @@ export class ProfessionalServicesComponent implements OnInit {
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
   }
-
-  // onSubmitUpdateServicePicture(): void {
-  //   const token = localStorage.getItem('profToken');
-  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  //   if (this.selectedFile && this.serviceIdToUpdate !== null) {
-  //     const formData = new FormData();
-  //     formData.append('file', this.selectedFile);
-
-  //     this.http.put<{ success: boolean; message: string }>(`https://localhost:7001/api/Professional/uploadServicePicture/${this.serviceIdToUpdate}`, formData, { headers })
-  //       .subscribe(
-  //         (response) => {
-  //           if (response.success) {
-  //             console.log('Service picture updated successfully:', response.message);
-  //             this.isUpdatingServicePicture = false;
-  //             this.serviceIdToUpdate = null;
-  //             this.fetchServices();
-  //             alert(response.message);
-  //           } else {
-  //             console.error('Error updating service picture:', response.message);
-  //             alert(response.message);
-  //           }
-  //         },
-  //         (error) => {
-  //           console.error('Error updating service picture:', error);
-  //           alert('Error updating service picture. Please try again later.');
-  //         }
-  //       );
-  //   }
-  // }
 
   onSubmitUpdateServicePicture(): void {
     const token = localStorage.getItem('profToken');

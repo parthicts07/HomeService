@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 interface Report {
   reportId: number;
@@ -19,9 +20,14 @@ interface Report {
 export class AdminReportsComponent implements OnInit {
   reports: Report[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
+    const token = localStorage.getItem('adminToken');
+    if(!token){
+      alert("Please login to access the dashboard!");
+      this.router.navigateByUrl('/login/adminLogin');
+    }
     this.fetchReports();
   }
 
@@ -38,21 +44,6 @@ export class AdminReportsComponent implements OnInit {
       }
     );
   }
-
-  // resolveReport(reportId: number, flag: boolean): void {
-  //   const token = localStorage.getItem('adminToken');
-  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  //   const body = { flag };
-
-  //   this.http.put(`https://localhost:7001/api/Admin/resolveReport/${reportId}`, body, { headers }).subscribe(
-  //     () => {
-  //       this.fetchReports();
-  //     },
-  //     (error) => {
-  //       console.error('Error resolving report:', error);
-  //     }
-  //   );
-  // }
 
   resolveReport(reportId: number, flag: boolean): void {
     const token = localStorage.getItem('adminToken');

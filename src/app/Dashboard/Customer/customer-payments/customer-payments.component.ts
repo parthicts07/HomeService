@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 interface Payment {
   paymentId: number;
@@ -19,9 +20,15 @@ export class CustomerPaymentsComponent implements OnInit{
 
   payments: Payment[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
+    const token = localStorage.getItem('custToken');
+    if(!token){
+      alert("Please login to access the dashboard!");
+      this.router.navigateByUrl('/login/customerLogin');
+    }
+
     this.fetchPayments();
   }
 

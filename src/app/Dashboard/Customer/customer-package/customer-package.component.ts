@@ -24,6 +24,12 @@ export class CustomerPackageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const token = localStorage.getItem('custToken');
+    if(!token){
+      alert("Please login to access the dashboard!");
+      this.router.navigateByUrl('/login/customerLogin');
+    }
+    
     this.serviceId = +this.route.snapshot.paramMap.get('serviceId')!;
     this.fetchServiceDetails();
     this.fetchPackages();

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 interface Package {
   packageId: number;
@@ -20,10 +21,15 @@ interface Package {
 export class AdminPackagesComponent implements OnInit {
   packages: Package[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     const token = localStorage.getItem('adminToken');
+    if(!token){
+      alert("Please login to access the dashboard!");
+      this.router.navigateByUrl('/login/adminLogin');
+    }
+
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     this.http.get<Package[]>('https://localhost:7001/api/Admin/getAllPackages', {headers})
       .subscribe((data: Package[]) => {
@@ -32,30 +38,6 @@ export class AdminPackagesComponent implements OnInit {
         console.error('There was an error fetching the packages!', error);
       });
   }
-
-  // flagPackage(packageId: number): void {
-  //   const token = localStorage.getItem('adminToken');
-  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  //   this.http.put(`https://localhost:7001/api/Admin/flagPackage/${packageId}`, {}, {headers})
-  //     .subscribe(response => {
-  //       alert('Package flagged successfully!');
-  //       this.updatePackageFlagStatus(packageId, true);
-  //     }, error => {
-  //       console.error('There was an error flagging the package!', error);
-  //     });
-  // }
-
-  // unflagPackage(packageId: number): void {
-  //   const token = localStorage.getItem('adminToken');
-  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  //   this.http.put(`https://localhost:7001/api/Admin/unFlagPackage/${packageId}`, {}, {headers})
-  //     .subscribe(response => {
-  //       alert('Package unflagged successfully!');
-  //       this.updatePackageFlagStatus(packageId, false);
-  //     }, error => {
-  //       console.error('There was an error unflagging the package!', error);
-  //     });
-  // }
 
   flagPackage(packageId: number): void {
     const token = localStorage.getItem('adminToken');

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 interface Service {
   serviceId: number;
@@ -21,10 +22,15 @@ interface Service {
 export class AdminServicesComponent implements OnInit {
   services: Service[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     const token = localStorage.getItem('adminToken');
+    if(!token){
+      alert("Please login to access the dashboard!");
+      this.router.navigateByUrl('/login/adminLogin');
+    }
+    
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     this.http.get<Service[]>('https://localhost:7001/api/Admin/getAllServices', {headers})
       .subscribe((data: Service[]) => {

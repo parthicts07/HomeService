@@ -36,6 +36,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 interface Booking {
   bookingId: number;
@@ -58,9 +59,14 @@ interface Booking {
 export class AdminBookingsComponent implements OnInit {
   bookings: Booking[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
+    const token = localStorage.getItem('adminToken');
+    if(!token){
+      alert("Please login to access the dashboard!");
+      this.router.navigateByUrl('/login/adminLogin');
+    }
     this.http.get<Booking[]>('https://localhost:7001/api/Admin/getAllBookings')
       .subscribe((data: Booking[]) => {
         this.bookings = data;

@@ -85,12 +85,12 @@
     content: '✔';
     position: absolute;
     left: 0;
-    color: #007bff; /* Highlight color */
+    color: #007bff;
 }
 
 .footer {
-    background-color: #1f2a36; /* Dark background color */
-    color: #ecf0f1; /* Light text color */
+    background-color: #1f2a36; 
+    color: #ecf0f1;
     padding: 40px 20px;
     text-align: left;
 }

@@ -1,207 +1,7 @@
-// import { Component, OnInit } from '@angular/core';
-// import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import Swal from 'sweetalert2';
-
-// interface Entity {
-//   id: number;
-//   name: string;
-// }
-
-// @Component({
-//   selector: 'app-customer-report',
-//   templateUrl: './customer-report.component.html',
-//   styleUrls: ['./customer-report.component.css']
-// })
-// export class CustomerReportComponent implements OnInit {
-//   reportModel = {
-//     reportedEntityId: null,
-//     reportType: '',
-//     reason: ''
-//   };
-//   entities: Entity[] = [];
-
-//   constructor(private http: HttpClient) {}
-
-//   ngOnInit(): void {}
-
-//   loadEntities(): void {
-//     const token = localStorage.getItem('custToken');
-//     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-//     let url = '';
-
-//     switch (this.reportModel.reportType) {
-//       case 'User':
-//         url = 'https://localhost:7001/api/Customer/getAllProfessional';
-//         break;
-//       case 'Service':
-//         url = 'https://localhost:7001/api/Customer/getAllService';
-//         break;
-//       case 'Package':
-//         url = 'https://localhost:7001/api/Customer/getAllPackages';
-//         break;
-//     }
-
-//     this.http.get<any[]>(url, { headers }).subscribe(
-//       (entities) => {
-//         this.entities = entities.map(entity => ({
-//           id: entity.userId || entity.serviceId || entity.packageId,
-//           name: entity.userName || entity.serviceName || entity.packageName
-//         }));
-//       },
-//       (error) => {
-//         console.error('Error loading entities:', error);
-//       }
-//     );
-//   }
-
-//   reportEntity(): void {
-//     const token = localStorage.getItem('custToken');
-//     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-//     this.http.post<{ success: boolean; message: string }>('https://localhost:7001/api/Customer/report', this.reportModel, { headers }).subscribe(
-//       (response) => {
-//         if (response.success) {
-//           Swal.fire({
-//             title: 'Report submitted successfully!',
-//             text: response.message,
-//             icon: 'success',
-//             timer: 2000,
-//             showConfirmButton: false
-//           }).then(() => {
-//             this.reportModel = { reportedEntityId: null, reportType: '', reason: '' };
-//             this.entities = [];
-//           });
-//         } else {
-//           Swal.fire({
-//             title: 'Error submitting report',
-//             text: response.message,
-//             icon: 'error',
-//             confirmButtonText: 'OK'
-//           });
-//         }
-//       },
-//       (error) => {
-//         console.error('Error submitting report:', error);
-//         Swal.fire({
-//           title: 'Error submitting report',
-//           text: 'Please try again later.',
-//           icon: 'error',
-//           confirmButtonText: 'OK'
-//         });
-//       }
-//     );
-//   }
-// }
-
-
-
-// import { Component, OnInit } from '@angular/core';
-// import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import Swal from 'sweetalert2';
-
-// interface Entity {
-//   id: number;
-//   name: string;
-// }
-
-// @Component({
-//   selector: 'app-customer-report',
-//   templateUrl: './customer-report.component.html',
-//   styleUrls: ['./customer-report.component.css']
-// })
-// export class CustomerReportComponent implements OnInit {
-//   reportModel = {
-//     reportedEntityId: null,
-//     reportType: '',
-//     reason: ''
-//   };
-//   entities: Entity[] = [];
-
-//   constructor(private http: HttpClient) {}
-
-//   ngOnInit(): void {}
-
-//   loadEntities(): void {
-//     const token = localStorage.getItem('custToken');
-//     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-//     let url = '';
-
-//     switch (this.reportModel.reportType) {
-//       case 'User':
-//         url = 'https://localhost:7001/api/Customer/getAllProfessional';
-//         break;
-//       case 'Service':
-//         url = 'https://localhost:7001/api/Customer/getAllService';
-//         break;
-//       case 'Package':
-//         url = 'https://localhost:7001/api/Customer/getAllPackages';
-//         break;
-//     }
-
-//     this.http.get<any>(url, { headers }).subscribe(
-//       (response) => {
-//         console.log('API response:', response); 
-//         if (Array.isArray(response)) {
-//           this.entities = response.map(entity => ({
-//             id: entity.userId || entity.serviceId || entity.packageId,
-//             name: entity.userName || entity.serviceName || entity.packageName
-//           }));
-//         } else {
-//           console.error('API response is not an array:', response);
-//         }
-//       },
-//       (error) => {
-//         console.error('Error loading entities:', error);
-//       }
-//     );
-//   }
-
-//   reportEntity(): void {
-//     const token = localStorage.getItem('custToken');
-//     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-//     this.http.post<{ success: boolean; message: string }>('https://localhost:7001/api/Customer/report', this.reportModel, { headers }).subscribe(
-//       (response) => {
-//         if (response.success) {
-//           Swal.fire({
-//             title: 'Report submitted successfully!',
-//             text: response.message,
-//             icon: 'success',
-//             timer: 2000,
-//             showConfirmButton: false
-//           }).then(() => {
-//             this.reportModel = { reportedEntityId: null, reportType: '', reason: '' };
-//             this.entities = [];
-//           });
-//         } else {
-//           Swal.fire({
-//             title: 'Error submitting report',
-//             text: response.message,
-//             icon: 'error',
-//             confirmButtonText: 'OK'
-//           });
-//         }
-//       },
-//       (error) => {
-//         console.error('Error submitting report:', error);
-//         Swal.fire({
-//           title: 'Error submitting report',
-//           text: 'Please try again later.',
-//           icon: 'error',
-//           confirmButtonText: 'OK'
-//         });
-//       }
-//     );
-//   }
-// }
-
-
-
-
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 interface Entity {
   id: number;
@@ -230,9 +30,15 @@ export class CustomerReportComponent implements OnInit {
   };
   entities: Entity[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const token = localStorage.getItem('custToken');
+    if(!token){
+      alert("Please login to access the dashboard!");
+      this.router.navigateByUrl('/login/customerLogin');
+    }
+  }
 
   loadEntities(): void {
     const token = localStorage.getItem('custToken');

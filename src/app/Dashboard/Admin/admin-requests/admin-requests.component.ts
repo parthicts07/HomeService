@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 interface Professional {
   professionalName: string;
@@ -29,10 +30,15 @@ interface Professional {
 export class AdminRequestsComponent implements OnInit {
   professionals: Professional[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     const token = localStorage.getItem('adminToken');
+    if(!token){
+      alert("Please login to access the dashboard!");
+      this.router.navigateByUrl('/login/adminLogin');
+    }
+
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     this.http.get<Professional[]>('https://localhost:7001/api/Admin/getUnApprovedProfessional',{headers})
       .subscribe((data: Professional[]) => {

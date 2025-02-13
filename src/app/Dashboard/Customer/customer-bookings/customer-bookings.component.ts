@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 interface Booking {
   bookingId: number;
@@ -30,7 +31,7 @@ export class CustomerBookingsComponent implements OnInit {
   selectedBookingId: number | null = null;
   showPaymentModal: boolean = false;
 
-  constructor(private http: HttpClient, private fb: FormBuilder) {
+  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) {
     this.rescheduleForm = this.fb.group({
       newDate: ['', []]
     });
@@ -47,6 +48,12 @@ export class CustomerBookingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const token = localStorage.getItem('custToken');
+    if(!token){
+      alert("Please login to access the dashboard!");
+      this.router.navigateByUrl('/login/customerLogin');
+    }
+
     this.fetchBookings();
   }
 

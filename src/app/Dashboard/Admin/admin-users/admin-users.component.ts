@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 interface User {
   userId: number;
@@ -21,10 +22,15 @@ export class AdminUsersComponent implements OnInit {
   customers: User[] = [];
   professionals: User[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     const token = localStorage.getItem('adminToken');
+    if(!token){
+      alert("Please login to access the dashboard!");
+      this.router.navigateByUrl('/login/adminLogin');
+    }
+
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     this.http.get<User[]>('https://localhost:7001/api/Admin/getAllUsers', {headers})
       .subscribe((data: User[]) => {
@@ -34,30 +40,6 @@ export class AdminUsersComponent implements OnInit {
         console.error('There was an error fetching the users!', error);
       });
   }
-
-  // flagUser(userId: number): void {
-  //   const token = localStorage.getItem('adminToken');
-  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  //   this.http.put(`https://localhost:7001/api/Admin/flagUser/${userId}`, {}, {headers})
-  //     .subscribe(response => {
-  //       alert('User flagged successfully!');
-  //       this.updateUserFlagStatus(userId, true);
-  //     }, error => {
-  //       console.error('There was an error flagging the user!', error);
-  //     });
-  // }
-
-  // unflagUser(userId: number): void {
-  //   const token = localStorage.getItem('adminToken');
-  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  //   this.http.put(`https://localhost:7001/api/Admin/unFlagUser/${userId}`, {}, {headers})
-  //     .subscribe(response => {
-  //       alert('User unflagged successfully!');
-  //       this.updateUserFlagStatus(userId, false);
-  //     }, error => {
-  //       console.error('There was an error unflagging the user!', error);
-  //     });
-  // }
 
   flagUser(userId: number): void {
     const token = localStorage.getItem('adminToken');
